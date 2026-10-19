@@ -1,0 +1,20 @@
+# Expected Threat (xT) Grid Training Pipeline
+# Pinned for M1 (ARM64) MacBook Air — Python 3.12
+#
+# Install (isolated env, recommended):
+#   python3 -m venv .venv
+#   .venv/bin/pip install -r requirements-xt.txt
+#
+# Note: pandera 0.17 (required by socceraction 1.5.3) is built for NumPy 1.x,
+# so NumPy and PyArrow must stay on the 1.x-compatible line.
+
+socceraction==1.5.3
+statsbombpy>=1.15.0
+pandas>=2.0.0
+numpy>=1.24,<2          # pandera 0.17 / socceraction 1.5.3 do not support NumPy 2
+pyarrow>=14,<17         # PyArrow 17+ requires NumPy 2; 16.1.0 tested with NumPy 1.26
+matplotlib>=3.7.0
+plotly>=5.0             # scripts/05_voxel_terrain_plotly.py
+tqdm>=4.65.0
+scipy>=1.10.0          # for xT grid interpolation (optional)
+multimethod<2.0.0       # pandera compat: pandera 0.17.x needs multimethod 1.x
